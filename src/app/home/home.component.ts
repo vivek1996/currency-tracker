@@ -65,29 +65,21 @@ export class HomeComponent implements OnInit {
     this.coinsData = fullData.data.coins;
   }
   update(val: NgForm) {
-    console.log(val.value);
-    // this._http.getAll(val.srcElement.value).subscribe(
-    //   data => {
-    //     this.coinsFullData = data;
-    //     console.log(data);
-    //     this.dataFilter(data);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+    // console.log(val.value);
+    const currency = val.value.currency ? val.value.currency : 'INR';
+    const time = val.value.time ? val.value.time : '24h';
+    // console.log({ currency, time });
+    if (currency !== 'INR' || time !== '24h') {
+      this._http.getAll(currency, time).subscribe(
+        data => {
+          this.coinsFullData = data;
+          console.log(data);
+          this.dataFilter(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
-  // changeTime(val) {
-  //   console.log(val.srcElement.value);
-  //   this._http.getAll( , val.srcElement.value).subscribe(
-  //     data => {
-  //       this.coinsFullData = data;
-  //       console.log(data);
-  //       this.dataFilter(data);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
 }

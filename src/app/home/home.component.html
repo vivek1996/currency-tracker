@@ -4,14 +4,14 @@
   <div class="col-12">
     <form class="form-row my-4 " #updateForm="ngForm" (ngSubmit)="update(updateForm)">
       <div class="col-md-4">
-        <label for="currency">Currecy</label>
+        <label for="currency">Currency</label>
         <select class="form-control" id="currency" name="currency" ngModel>
           <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
         </select>
       </div>
       <div class="col-md-4">
-        <label for="currency">Currecy</label>
-        <select class="form-control" id="currency" name="time" ngModel>
+        <label for="time">Time Period</label>
+        <select class="form-control" id="time" name="time" ngModel>
           <option *ngFor="let time of times" [value]="time">{{time}}</option>
         </select>
       </div>

@@ -1,3 +1,16 @@
 .pt-4-cus {
   padding-top: 2rem !important;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #00adb5;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 173, 181, 0.37);
+}
+.mr-2-px {
+  margin-right: 3px;
+}

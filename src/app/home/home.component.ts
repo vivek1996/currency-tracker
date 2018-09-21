@@ -82,4 +82,7 @@ export class HomeComponent implements OnInit {
       );
     }
   }
+  onClick(val) {
+console.log(val);
+  }
 }

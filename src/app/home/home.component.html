@@ -1,3 +1,20 @@
-<p>
-  home works!
-</p>
+<h1>Price Table</h1>
+<h6 *ngIf="coinsFullData">Prices are in {{coinsFullData.data.base.sign}} ( {{coinsFullData.data.base.symbol}} )</h6>
+<table *ngIf="coinsData" class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let coin of coinsData; index as i">
+      <th scope="row">{{i+1}}</th>
+      <td> {{coin.name}} </td>
+      <td> {{coin.symbol}} </td>
+      <td>{{coin.price | currency:'INR'}}</td>
+    </tr>
+  </tbody>
+</table>

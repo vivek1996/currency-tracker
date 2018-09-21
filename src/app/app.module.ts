@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// Chart
-import { ChartModule } from 'angular2-chartjs';
+import { ApiService } from './api.service';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, ChartModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

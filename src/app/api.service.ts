@@ -7,11 +7,13 @@ export class ApiService {
   baseUrl = 'https://api.coinranking.com/v1/public';
   constructor(private http: HttpClient) {}
   // data for home page : all coin data
-  getAll() {
-    return this.http.get(`${this.baseUrl}/coins?base=INR`);
+  getAll(base = 'INR', time = '24h') {
+    return this.http.get(
+      `${this.baseUrl}/coins?base=${base}&timePeriod=${time}`
+    );
   }
   // get data of single coin
-  getCoin(id, base = 'INR', time = '12h') {
+  getCoin(id, base = 'INR', time = '24h') {
     return this.http.get(
       `${this.baseUrl}/coin/${id}?base=${base}&timePeriod=${time}`
     );

@@ -14,3 +14,13 @@
 .mr-2-px {
   margin-right: 3px;
 }
+.btn-my-primary {
+  background-color: lighten(#00adb5, 10);
+  color: #fff;
+  &:hover {
+    background-color: #00adb5;
+  }
+  &:active {
+    border-color: #00adb5;
+  }
+}

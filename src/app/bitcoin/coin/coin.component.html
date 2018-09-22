@@ -1,3 +1,11 @@
-<p>
-  coin works!
-</p>
+<div class="row">
+  <div class="col-12" *ngIf="coinFullData">
+    <div class="chart">
+      <div class="chart__container">
+        <div class="chart__holder">
+          <chart [type]="type" [data]="data" [options]="options"></chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

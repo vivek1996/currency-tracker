@@ -7,7 +7,11 @@ import { HttpClient } from '@angular/common/http';
 export class CoindeskapiService {
   private baseUrl = `https://api.coindesk.com/v1/bpi`;
   constructor(private http: HttpClient) {}
-  getCurrentPrice(currecy = 'INR') {
-    return this.http.get(`${this.baseUrl}/currentprice/${currecy}.json`);
+  getPrice(currecy = 'INR', sDate, eDate) {
+    return this.http.get(
+      `${
+        this.baseUrl
+      }/historical/close.json?start=${sDate}&end=${eDate}&currency=${currecy}`
+    );
   }
 }

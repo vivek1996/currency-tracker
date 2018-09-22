@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location, DatePipe, CurrencyPipe } from '@angular/common';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 @Component({
   selector: 'app-coin-detail',
   templateUrl: './coin-detail.component.html',
@@ -25,14 +24,6 @@ export class CoinDetailComponent implements OnInit {
     this.coinId = this.route.snapshot.paramMap.get('id');
   }
   type = 'line';
-
-  // options = {
-  //   responsive: true,
-  //   maintainAspectRatio: false
-  // };
-  // We calculate min, max and stepSize, because of a bug in ChartJS
-  // If the spacing is so small that it will go to an exponential number
-  // the chart won't show up!
   options = {
     responsive: true,
     maintainAspectRatio: false,

@@ -16,7 +16,7 @@ export class CoinComponent implements OnInit {
     tooltips: {
       enabled: true,
       intersect: false,
-      mode: 'index'
+      mode: 'label'
     },
     layout: {
       padding: {
@@ -54,6 +54,9 @@ export class CoinComponent implements OnInit {
           gridLines: {
             display: true,
             drawBorder: false
+          },
+          ticks: {
+            beginAtZero: true
           }
         }
       ]
@@ -83,10 +86,10 @@ export class CoinComponent implements OnInit {
   formatData(data) {
     const keys = Object.keys(data);
     const timeStamp = keys.map(key => {
-      return this.pipe.transform(key, 'short');
+      return this.pipe.transform(key, 'mediumDate');
     });
     const values = Object.values(data);
-    const price = values.map(value => Math.round(value * 10) / 10);
+    const price = values.map(value => Math.round(Number(value) * 10) / 10);
     this.data = {
       labels: timeStamp,
       datasets: [

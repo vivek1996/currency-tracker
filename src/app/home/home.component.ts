@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../api.service';
 import { NgForm } from '@angular/forms';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
     'ZAR'
   ];
   times = ['24h', '7d', '30d'];
-  constructor(private _http: ApiService) {}
+  constructor(private _http: ApiService, private router: Router) {}
 
   ngOnInit() {
     this._http.getAll().subscribe(
@@ -83,6 +84,7 @@ export class HomeComponent implements OnInit {
     }
   }
   onClick(val) {
-console.log(val);
+  console.log(val);
+    this.router.navigate(['/coin', val]);
   }
 }

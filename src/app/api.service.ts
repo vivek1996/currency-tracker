@@ -13,7 +13,13 @@ export class ApiService {
     );
   }
   // get data of single coin
-  getCoin(id, base = 'INR', time = '24h') {
+  getCoinPrice(id, base = 'INR', time = '24h') {
+    return this.http.get(
+      `${this.baseUrl}/coin/${id}/history/${time}?base=${base}`
+    );
+  }
+  // get details of single coin
+  getCoinDetails(id, base = 'INR', time = '24h') {
     return this.http.get(
       `${this.baseUrl}/coin/${id}?base=${base}&timePeriod=${time}`
     );

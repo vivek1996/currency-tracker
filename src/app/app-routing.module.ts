@@ -9,6 +9,7 @@ const routes: Routes = [
     path: 'coin/:id',
     loadChildren: './detail/detail.module#DetailModule'
   },
+  { path: 'bitcoin', loadChildren: './bitcoin/bitcoin.module#BitcoinModule' },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: HomeComponent }
 ];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoindeskapiService } from '../../coindeskapi.service';
 import { DatePipe } from '@angular/common';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-coin',
   templateUrl: './coin.component.html',
@@ -8,6 +9,43 @@ import { DatePipe } from '@angular/common';
 })
 export class CoinComponent implements OnInit {
   coinFullData;
+  currencies = [
+    'AUD',
+    'BGN',
+    'BRL',
+    'BTC',
+    'CAD',
+    'CHF',
+    'CNY',
+    'CZK',
+    'DKK',
+    'ETH',
+    'EUR',
+    'GBP',
+    'HKD',
+    'HRK',
+    'HUF',
+    'IDR',
+    'ILS',
+    'INR',
+    'JPY',
+    'KRW',
+    'MXN',
+    'MYR',
+    'NOK',
+    'NZD',
+    'PHP',
+    'PLN',
+    'RON',
+    'RUB',
+    'SEK',
+    'SGD',
+    'THB',
+    'TRY',
+    'USD',
+    'ZAR'
+  ];
+  times = ['24h', '7d', '30d'];
   constructor(private _http: CoindeskapiService) {}
   type = 'line';
   options = {
@@ -71,6 +109,8 @@ export class CoinComponent implements OnInit {
   };
   data;
   pipe = new DatePipe('en-IN');
+  timeStamp;
+  price;
   ngOnInit() {
     this._http.getPrice('INR', '2017-09-21', '2018-09-21').subscribe(
       data => {
@@ -85,17 +125,17 @@ export class CoinComponent implements OnInit {
   }
   formatData(data) {
     const keys = Object.keys(data);
-    const timeStamp = keys.map(key => {
+    this.timeStamp = keys.map(key => {
       return this.pipe.transform(key, 'mediumDate');
     });
     const values = Object.values(data);
-    const price = values.map(value => Math.round(Number(value) * 10) / 10);
+    this.price = values.map(value => Math.round(Number(value) * 10) / 10);
     this.data = {
-      labels: timeStamp,
+      labels: this.timeStamp,
       datasets: [
         {
           label: 'Price',
-          data: price,
+          data: this.price,
           borderColor: '#3a97ff',
           pointHoverRadius: 0,
           tension: 0,

@@ -1,5 +1,27 @@
 <div class="row">
   <div class="col-12" *ngIf="coinFullData">
+      <div class="row">
+          <div class="col-12">
+            <form class="form-row my-4 " #updateForm="ngForm" (ngSubmit)="update(updateForm)">
+              <div class="col-md-4">+
+                <label for="currency"> <b>Currency</b> <small> (Default : INR)</small> </label>
+                <select class="form-control" id="currency" name="currency" ngModel>
+                  <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="time"> <b>Time Period</b> <small> (Default : 24h)</small> </label>
+                <select class="form-control" id="time" name="time" ngModel>
+                  <option *ngFor="let time of times" [value]="time">{{time}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 pt-4-cus">
+                <button type="submit" class="btn btn-my-primary">Submit</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
     <div class="chart">
       <div class="chart__container">
         <div class="chart__holder">

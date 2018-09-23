@@ -8,15 +8,26 @@
       entities.</p>
 
 
-    <div class="col-12 my-4">
-      <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mx-auto" role="group" (click)="getData($event)" aria-label="First group">
-          <button type="button" value="1d" class="btn btn-outline-secondary">1day</button>
-          <button type="button" value="3w" class="btn btn-outline-secondary">1week</button>
-          <button type="button" value="1M" class="btn btn-outline-secondary">1month</button>
-          <button type="button" value="1y" class="btn btn-outline-secondary">1year</button>
+    <div class="row my-4">
+      <div class="col-md-4">
+        <label for="currency"> <b>Currency</b> <small> (Default : INR)</small> </label>
+        <select (change)="currecyChange($event)" class="form-control" id="currency">
+          <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <div class="btn-toolbar pt-4-cus" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mx-auto" role="group" (click)="getData($event)" aria-label="First group">
+            <button type="button" value="1d" class="btn btn-outline-secondary">1day</button>
+            <button type="button" value="3w" class="btn btn-outline-secondary">1week</button>
+            <button type="button" value="1M" class="btn btn-outline-secondary">1month</button>
+            <button type="button" value="3M" class="btn btn-outline-secondary">3months</button>
+            <button type="button" value="1y" class="btn btn-outline-secondary">1year</button>
+            <button type="button" value="5y" class="btn btn-outline-secondary">5years</button>
+          </div>
         </div>
       </div>
+
     </div>
     <div class="chart">
       <div class="chart__container">

@@ -74,6 +74,13 @@ export class CoinComponent implements OnInit {
   pipe = new DatePipe('en-IN');
   timeStamp;
   price;
+  currentCurrency = 'INR';
+  todayDate = moment().format('YYYY-MM-DD');
+  selectedTime = moment()
+  .subtract(1, 'week')
+  .format('YYYY-MM-DD');
+  // prettier-ignore
+  currencies = ['AED', 'AUD', 'BDT', 'BTC', 'EGP', 'EUR', 'INR', 'IQD', 'LKR', 'NZD', 'USD', 'ZAR', 'ZWL' ];
   ngOnInit() {
     this._http.getInitialData().subscribe(
       data => {
@@ -112,11 +119,24 @@ export class CoinComponent implements OnInit {
   }
   getData(event) {
     const d = event.target.value.split('');
-    const selectedTime = moment()
+    this.selectedTime = moment()
       .subtract(Number(d[0]), d[1])
       .format('YYYY-MM-DD');
-    const todayDate = moment().format('YYYY-MM-DD');
-    this._http.getPrice('INR', selectedTime, todayDate).subscribe(
+    this._http.getPrice( this.currentCurrency , this.selectedTime, this.todayDate).subscribe(
+      data => {
+        console.log(data);
+        this.coinFullData = data;
+        this.formatData(this.coinFullData.bpi);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  currecyChange(event) {
+    console.log(event.target.value);
+    this.currentCurrency = event.target.value;
+    this._http.getPrice( this.currentCurrency , this.selectedTime, this.todayDate).subscribe(
       data => {
         console.log(data);
         this.coinFullData = data;

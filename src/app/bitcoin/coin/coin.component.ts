@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoindeskapiService } from '../../coindeskapi.service';
 import { DatePipe } from '@angular/common';
-import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 @Component({
   selector: 'app-coin',
   templateUrl: './coin.component.html',
@@ -9,43 +9,6 @@ import { NgForm } from '@angular/forms';
 })
 export class CoinComponent implements OnInit {
   coinFullData;
-  currencies = [
-    'AUD',
-    'BGN',
-    'BRL',
-    'BTC',
-    'CAD',
-    'CHF',
-    'CNY',
-    'CZK',
-    'DKK',
-    'ETH',
-    'EUR',
-    'GBP',
-    'HKD',
-    'HRK',
-    'HUF',
-    'IDR',
-    'ILS',
-    'INR',
-    'JPY',
-    'KRW',
-    'MXN',
-    'MYR',
-    'NOK',
-    'NZD',
-    'PHP',
-    'PLN',
-    'RON',
-    'RUB',
-    'SEK',
-    'SGD',
-    'THB',
-    'TRY',
-    'USD',
-    'ZAR'
-  ];
-  times = ['24h', '7d', '30d'];
   constructor(private _http: CoindeskapiService) {}
   type = 'line';
   options = {
@@ -146,5 +109,22 @@ export class CoinComponent implements OnInit {
         }
       ]
     };
+  }
+  getData(event) {
+    const d = event.target.value.split('');
+    const selectedTime = moment()
+      .subtract(Number(d[0]), d[1])
+      .format('YYYY-MM-DD');
+    const todayDate = moment().format('YYYY-MM-DD');
+    this._http.getPrice('INR', selectedTime, todayDate).subscribe(
+      data => {
+        console.log(data);
+        this.coinFullData = data;
+        this.formatData(this.coinFullData.bpi);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

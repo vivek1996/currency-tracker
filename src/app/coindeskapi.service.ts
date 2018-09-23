@@ -14,4 +14,8 @@ export class CoindeskapiService {
       }/historical/close.json?start=${sDate}&end=${eDate}&currency=${currecy}`
     );
   }
+  // get initial data
+  getInitialData() {
+    return this.http.get(`${this.baseUrl}/historical/close.json`);
+  }
 }

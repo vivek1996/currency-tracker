@@ -75,7 +75,7 @@ export class CoinComponent implements OnInit {
   timeStamp;
   price;
   ngOnInit() {
-    this._http.getPrice('INR', '2017-09-21', '2018-09-21').subscribe(
+    this._http.getInitialData().subscribe(
       data => {
         console.log(data);
         this.coinFullData = data;

@@ -6,13 +6,15 @@
       internet globally
       without using financial institutions like banks. The network is controlled by many of its users, instead of a few
       entities.</p>
+
+
     <div class="col-12 my-4">
       <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mx-auto" role="group" (click)="getData($event)" aria-label="First group">
-          <button type="button" value="1d" class="btn btn-outline-secondary">1d</button>
-          <button type="button" value="3w" class="btn btn-outline-secondary">1w</button>
-          <button type="button" value="1M" class="btn btn-outline-secondary">1m</button>
-          <button type="button" value="1y" class="btn btn-outline-secondary">1y</button>
+          <button type="button" value="1d" class="btn btn-outline-secondary">1day</button>
+          <button type="button" value="3w" class="btn btn-outline-secondary">1week</button>
+          <button type="button" value="1M" class="btn btn-outline-secondary">1month</button>
+          <button type="button" value="1y" class="btn btn-outline-secondary">1year</button>
         </div>
       </div>
     </div>
@@ -22,6 +24,10 @@
           <chart [type]="type" [data]="data" [options]="options"></chart>
         </div>
       </div>
+    </div>
+    <div class=" mt-5" *ngIf="coinFullData">
+      <h6 class="text-center">Last Updated : {{coinFullData.time.updated | date: 'full'}} </h6>
+      <p class="lead font-weight-normal text-center"> {{coinFullData.disclaimer}} </p>
     </div>
   </div>
 </div>

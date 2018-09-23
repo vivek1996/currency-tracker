@@ -10,10 +10,12 @@ import { FormsModule } from '@angular/forms';
 // progress bar
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, LoadingBarHttpClientModule, LoadingBarRouterModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, LoadingBarHttpClientModule, LoadingBarRouterModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })

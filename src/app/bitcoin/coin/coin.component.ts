@@ -80,11 +80,11 @@ export class CoinComponent implements OnInit {
   .subtract(1, 'week')
   .format('YYYY-MM-DD');
   // prettier-ignore
-  currencies = ['AED', 'AUD', 'BDT', 'BTC', 'EGP', 'EUR', 'INR', 'IQD', 'LKR', 'NZD', 'USD', 'ZAR', 'ZWL' ];
+  currencies = ['INR', 'AUD', 'BDT', 'BTC', 'EGP', 'EUR', 'AED', 'IQD', 'LKR', 'NZD', 'USD', 'ZAR', 'ZWL' ];
   ngOnInit() {
     this._http.getInitialData().subscribe(
       data => {
-        console.log(data);
+       // console.log(data);
         this.coinFullData = data;
         this.formatData(this.coinFullData.bpi);
       },
@@ -124,7 +124,7 @@ export class CoinComponent implements OnInit {
       .format('YYYY-MM-DD');
     this._http.getPrice( this.currentCurrency , this.selectedTime, this.todayDate).subscribe(
       data => {
-        console.log(data);
+       // console.log(data);
         this.coinFullData = data;
         this.formatData(this.coinFullData.bpi);
       },
@@ -134,11 +134,11 @@ export class CoinComponent implements OnInit {
     );
   }
   currecyChange(event) {
-    console.log(event.target.value);
+   // console.log(event.target.value);
     this.currentCurrency = event.target.value;
     this._http.getPrice( this.currentCurrency , this.selectedTime, this.todayDate).subscribe(
       data => {
-        console.log(data);
+       // console.log(data);
         this.coinFullData = data;
         this.formatData(this.coinFullData.bpi);
       },

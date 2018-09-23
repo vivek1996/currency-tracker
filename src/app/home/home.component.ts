@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     this._http.getAll().subscribe(
       data => {
         this.coinsFullData = data;
-        console.log(data);
+       // console.log(data);
         this.dataFilter(data);
       },
       error => {
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
       this._http.getAll(currency, time).subscribe(
         data => {
           this.coinsFullData = data;
-          console.log(data);
+         // console.log(data);
           this.dataFilter(data);
         },
         error => {
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
     }
   }
   onClick(val) {
-  console.log(val);
+ // console.log(val);
     this.router.navigate(['/coin', val]);
   }
 }

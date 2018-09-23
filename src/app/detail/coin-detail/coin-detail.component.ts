@@ -102,21 +102,15 @@ export class CoinDetailComponent implements OnInit {
     );
   }
   filterData(fullData) {
-    console.log(fullData);
-    // this.timeStamp = fullData.map(data => data.timestamp);
+   // console.log(fullData);
     const time = fullData.map(data => {
       return this.pipe.transform(data.timestamp, 'short');
     });
-    // this.data.labels = fullData.map(data => data.timestamp);
-    // this.price = fullData.map(data => data.price);
     const price = fullData.map(data => {
-      // console.log(this.currencyPipe.transform(data.price, 'INR'));
       const float = data.price;
-      // return Number((data.price).toFixed(2));
       return Math.round(float * 10) / 10;
     });
-    // this.data.datasets[0].data = fullData.map(data => data.price);
-    this.data = {
+this.data = {
       labels: time,
       datasets: [
         {
